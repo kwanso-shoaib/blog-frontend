@@ -1,0 +1,20 @@
+mutation signUp($name: String!, $email: String!, $password: String!) {
+  signUp(createUserInput: { name: $name, email: $email, password: $password,role: Admin }) {
+    name
+    email
+    password
+  }
+}
+
+
+mutation signIn($email: String!, $password: String!) {
+  signIn(user: { email: $email, password: $password }) {
+    accesstoken
+    response {
+      status
+      message
+    }
+  }
+}
+
+
