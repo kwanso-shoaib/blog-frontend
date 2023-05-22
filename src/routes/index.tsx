@@ -8,6 +8,7 @@ import {
   MyArticles,
   ReadBlog,
   Home,
+  ReadBlogBySearch,
 } from "../pages";
 import { Protected } from "../components";
 export const protectedRoutes: RouteProps[] = [
@@ -38,6 +39,14 @@ export const protectedRoutes: RouteProps[] = [
   {
     path: `${ROUTES_PATH.readBlog}/:id`,
     element: <ReadBlog />,
+  },
+  {
+    path: `${ROUTES_PATH.readBlogBySearch}/:search`,
+    element: (
+      <Protected>
+        <ReadBlogBySearch />
+      </Protected>
+    ),
   },
   {
     path: ROUTES_PATH.home,
