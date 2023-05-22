@@ -7,6 +7,7 @@ import {
   CreatePost,
   MyArticles,
   ReadBlog,
+  Home,
 } from "../pages";
 import { Protected } from "../components";
 export const protectedRoutes: RouteProps[] = [
@@ -37,6 +38,10 @@ export const protectedRoutes: RouteProps[] = [
   {
     path: `${ROUTES_PATH.readBlog}/:id`,
     element: <ReadBlog />,
+  },
+  {
+    path: ROUTES_PATH.home,
+    element: <Home />,
   },
 ];
 export const authRoutes: RouteProps[] = [

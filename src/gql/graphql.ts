@@ -379,6 +379,42 @@ export type GetPostsQuery = {
   }>;
 };
 
+export type FindAllPostsQueryVariables = Exact<{
+  skip: Scalars["Int"];
+  take: Scalars["Int"];
+}>;
+
+export type FindAllPostsQuery = {
+  __typename?: "Query";
+  findAllPosts: {
+    __typename?: "AllPostsType";
+    total: number;
+    items: Array<{
+      __typename?: "Posts";
+      id: number;
+      title: string;
+      text: string;
+      image?: string | null;
+      tag?: string | null;
+      minutesToRead?: string | null;
+      userId?: string | null;
+      createdAt: string;
+      user: { __typename?: "Users"; name: string; email: string };
+      comments: Array<{
+        __typename?: "Comments";
+        id: number;
+        text: string;
+        userId?: string | null;
+        postsId?: number | null;
+        parentId?: number | null;
+        replyCount?: number | null;
+        createdAt: any;
+        user: { __typename?: "Users"; name: string; email: string };
+      }>;
+    }>;
+  };
+};
+
 export type SignUpMutationVariables = Exact<{
   name: Scalars["String"];
   email: Scalars["String"];
@@ -839,6 +875,96 @@ export type GetPostsLazyQueryHookResult = ReturnType<
 export type GetPostsQueryResult = Apollo.QueryResult<
   GetPostsQuery,
   GetPostsQueryVariables
+>;
+export const FindAllPostsDocument = gql`
+  query findAllPosts($skip: Int!, $take: Int!) {
+    findAllPosts(paginationInput: { skip: $skip, take: $take }) {
+      total
+      items {
+        id
+        title
+        text
+        image
+        tag
+        minutesToRead
+        userId
+        createdAt
+        user {
+          name
+          email
+        }
+        comments {
+          id
+          text
+          userId
+          postsId
+          parentId
+          replyCount
+          user {
+            name
+            email
+          }
+          createdAt
+        }
+        user {
+          name
+          email
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useFindAllPostsQuery__
+ *
+ * To run a query within a React component, call `useFindAllPostsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFindAllPostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFindAllPostsQuery({
+ *   variables: {
+ *      skip: // value for 'skip'
+ *      take: // value for 'take'
+ *   },
+ * });
+ */
+export function useFindAllPostsQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    FindAllPostsQuery,
+    FindAllPostsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<FindAllPostsQuery, FindAllPostsQueryVariables>(
+    FindAllPostsDocument,
+    options
+  );
+}
+export function useFindAllPostsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    FindAllPostsQuery,
+    FindAllPostsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<FindAllPostsQuery, FindAllPostsQueryVariables>(
+    FindAllPostsDocument,
+    options
+  );
+}
+export type FindAllPostsQueryHookResult = ReturnType<
+  typeof useFindAllPostsQuery
+>;
+export type FindAllPostsLazyQueryHookResult = ReturnType<
+  typeof useFindAllPostsLazyQuery
+>;
+export type FindAllPostsQueryResult = Apollo.QueryResult<
+  FindAllPostsQuery,
+  FindAllPostsQueryVariables
 >;
 export const SignUpDocument = gql`
   mutation signUp($name: String!, $email: String!, $password: String!) {

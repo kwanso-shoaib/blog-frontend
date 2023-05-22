@@ -62,6 +62,7 @@ export type NavLinksListProps = {
 
 export type FullViewHeaderProps = {
   isLoggedIn: boolean;
+  logout: () => void;
 };
 
 export type UserContextProps = {

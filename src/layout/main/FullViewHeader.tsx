@@ -9,7 +9,7 @@ import { HEADER_NAV_LINKS, ROUTES_PATH } from "../../constants";
 import { CustomAvatar, GreyBox, HeaderButton } from "../../styles";
 import { Box, ListItemIcon, Menu, MenuItem, Stack } from "@mui/material";
 
-export const FullViewHeader = ({ isLoggedIn }: FullViewHeaderProps) => {
+export const FullViewHeader = ({ isLoggedIn, logout }: FullViewHeaderProps) => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -75,6 +75,16 @@ export const FullViewHeader = ({ isLoggedIn }: FullViewHeaderProps) => {
                       <Settings fontSize="small" />
                     </ListItemIcon>
                     Settings
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      logout();
+                    }}
+                  >
+                    <ListItemIcon>
+                      <Logout fontSize="small" />
+                    </ListItemIcon>
+                    Logout
                   </MenuItem>
                 </Menu>
               </Box>
