@@ -1,15 +1,15 @@
 import { ApolloProvider } from "@apollo/client";
-import { client } from "./graphql/client";
-import { theme } from "./theme";
 import {
   CssBaseline,
   StyledEngineProvider,
   ThemeProvider,
 } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { UserProvider } from "./context";
+import { client } from "./graphql/client";
 import { authRoutes, protectedRoutes } from "./routes";
 import { MainLayout, PublicLayout } from "./layout";
-import { UserContext, UserProvider } from "./context";
+import { theme } from "./theme";
 function App() {
   return (
     <UserProvider>

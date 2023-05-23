@@ -54,7 +54,7 @@ export const SigninForm = () => {
     console.log(response.data?.signIn);
     if (response.data?.signIn) {
       login(values.rememberMe && response.data.signIn.accesstoken);
-      navigate(ROUTES_PATH.settings);
+      navigate(ROUTES_PATH.home);
     }
   };
 
