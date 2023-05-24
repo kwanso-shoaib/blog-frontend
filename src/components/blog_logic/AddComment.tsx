@@ -6,7 +6,7 @@ import { AddCommentProps } from "../../types";
 import { SecondaryButton } from "../../styles";
 import { useCreateCommentMutation } from "../../gql/graphql";
 import { PrimaryInputField, PrimaryLoader } from "../../components";
-
+import { AddCommenFormType } from "../../types";
 const schema = yupSchema.createComment;
 
 export const AddComment = ({
@@ -32,7 +32,8 @@ export const AddComment = ({
     },
   });
 
-  const onFormSubmit = async (values: any) => {
+  const onFormSubmit = async (values: AddCommenFormType) => {
+    console.log(values);
     if (isDirty) {
       await createComment({
         variables: {

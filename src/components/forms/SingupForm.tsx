@@ -1,16 +1,20 @@
-import toast from "react-hot-toast";
-import { Box } from "@mui/material";
-import { useAuth } from "../../hooks";
-import { useForm } from "react-hook-form";
-import { yupSchema } from "../../validation";
-import { ROUTES_PATH } from "../../constants";
-import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { PrimaryPasswordField } from "../common/inputFields/PrimaryPasswordField";
+import { Box } from "@mui/material";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { ROUTES_PATH } from "../../constants";
+import {
+  CreateUserInput,
+  useSignInMutation,
+  useSignUpMutation,
+} from "../../gql/graphql";
+import { useAuth } from "../../hooks";
 import { InputFieldWrapper, PrimaryButton } from "../../styles";
+import { yupSchema } from "../../validation";
 import { PrimaryInputField } from "../common";
+import { PrimaryPasswordField } from "../common/inputFields/PrimaryPasswordField";
 import { PrimaryLoader } from "../common/loader/PrimaryLoader";
-import { useSignUpMutation, useSignInMutation } from "../../gql/graphql";
 const schema = yupSchema.signUp;
 
 export const SignupForm = () => {
@@ -48,7 +52,7 @@ export const SignupForm = () => {
     },
   });
 
-  const onFormSubmit = (values: any) => {
+  const onFormSubmit = (values: CreateUserInput) => {
     signUp({
       variables: {
         name: values.name,

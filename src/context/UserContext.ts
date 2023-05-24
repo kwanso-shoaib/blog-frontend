@@ -5,5 +5,3 @@ export const UserContext = createContext<UserContextProps>({
   isLoggedIn: false,
   setIsLoggedIn: () => {},
 });
-
-//export const useUserContext = useContext(UserContext);

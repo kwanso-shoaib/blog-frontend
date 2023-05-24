@@ -9,7 +9,9 @@ import { UserProvider } from "./context";
 import { client } from "./graphql/client";
 import { authRoutes, protectedRoutes } from "./routes";
 import { MainLayout, PublicLayout } from "./layout";
+import { NotFound } from "./pages";
 import { theme } from "./theme";
+import { RouteProps } from "react-router-dom";
 function App() {
   return (
     <UserProvider>
@@ -20,7 +22,7 @@ function App() {
               <BrowserRouter>
                 <Routes>
                   <Route element={<PublicLayout />}>
-                    {authRoutes.map((route, index) => (
+                    {authRoutes.map((route: RouteProps, index: number) => (
                       <Route
                         path={route.path}
                         element={route.element}
@@ -37,6 +39,7 @@ function App() {
                       ></Route>
                     ))}
                   </Route>
+                  <Route path="/*" element={<NotFound />} />
                 </Routes>
               </BrowserRouter>
             </CssBaseline>

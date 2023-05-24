@@ -6,3 +6,4 @@ export * from "./MyArticles";
 export { ReadBlog } from "./ReadBlog";
 export { Home } from "./Home";
 export { ReadBlogBySearch } from "./ReadBlogSearch";
+export { NotFound } from "./NotFound";

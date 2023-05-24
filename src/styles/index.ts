@@ -42,6 +42,15 @@ export const ForgetPasswordLink = styled(Link)(({ theme }) => ({
   textAlign: "right",
   marginTop: "5px",
 }));
+export const NotFoundBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "column",
+  minHeight: "100vh",
+
+  [theme.breakpoints.down("md")]: {},
+}));
 
 export const AuthPageHeading = styled(Typography)(({ theme }) => ({
   color: theme.palette.primary.main,

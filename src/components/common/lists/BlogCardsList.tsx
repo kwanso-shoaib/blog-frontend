@@ -5,7 +5,7 @@ import { BlogCardsListProps } from "../../../types";
 import { getFormatDateInDDMMYYYY } from "../../../utility_Func";
 import { BlogImage1, UserDummyImage } from "../../../asset/images";
 import { BlogCard, PrimaryPagination } from "../../../components";
-
+import { Posts } from "../../../gql/graphql";
 export const BlogCardsList = ({
   data,
   total,
@@ -16,7 +16,7 @@ export const BlogCardsList = ({
   const navigate = useNavigate();
   return (
     <>
-      {data.map((post, index) => (
+      {data.map((post: Posts, index: number) => (
         <Box
           key={post.id}
           onClick={() => navigate(`${ROUTES_PATH.readBlog}/${post.id}`)}

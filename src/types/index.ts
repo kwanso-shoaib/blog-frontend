@@ -1,15 +1,14 @@
-import { BaseTextFieldProps, SxProps, Theme } from "@mui/material";
+import { BaseTextFieldProps, SxProps, Theme, Checkbox } from "@mui/material";
 import { DropzoneOptions } from "react-dropzone";
 import { Dispatch, SetStateAction, ReactNode } from "react";
 import { Posts, Comments } from "../gql/graphql";
-import { StringLiteral } from "typescript";
+import { Control } from "react-hook-form";
 export type HeaderNavLinkType = {
   id: number;
   to: string;
   text: string;
   isProtected: boolean;
 };
-
 export type PrimaryPasswordFieldProps = {
   name: string;
   control: any;
@@ -18,7 +17,6 @@ export type PrimaryPasswordFieldProps = {
   placeholder?: string;
   props?: BaseTextFieldProps;
 };
-
 export type PasswordInputAdornmentProps = {
   showPassword: boolean;
   onhandleClickShowPassword: () => void;
@@ -35,6 +33,12 @@ export type PrimaryInputFieldProps = {
 
 export type PrimaryLoaderProps = {
   isLoading: boolean;
+};
+
+export type Checkbox = {
+  rememberMe: boolean;
+  email: string;
+  password: string;
 };
 
 export type PrimaryCheckboxProps = {
@@ -155,4 +159,19 @@ export type BlogContentProps = {
   title: string;
   duration: string;
   authorName: string;
+};
+export type UpdateUserForm = {
+  name: string;
+  confirmPassword: string;
+  password: string;
+};
+
+export type CreatePostFormType = {
+  tag: string;
+  title: string;
+  minToRead: string;
+  text: string;
+};
+export type AddCommenFormType = {
+  text: string;
 };

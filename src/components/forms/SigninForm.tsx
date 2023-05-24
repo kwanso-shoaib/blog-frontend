@@ -5,9 +5,10 @@ import { yupSchema } from "../../validation";
 import { ROUTES_PATH } from "../../constants";
 import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useSignInMutation } from "../../gql/graphql";
+import { useSignInMutation, SignInUserInput } from "../../gql/graphql";
 import { DONT_HAVE_ACCOUNT_SX } from "../../styles/constants";
 import { Box, Divider, Typography } from "@mui/material";
+import { useEffect } from "react";
 import {
   PrimaryButton,
   ForgetPasswordLink,
@@ -44,7 +45,7 @@ export const SigninForm = () => {
     },
   });
 
-  const onFormSubmit = async (values: any) => {
+  const onFormSubmit = async (values: SignInUserInput) => {
     const response = await signIn({
       variables: {
         email: values.email,
@@ -53,7 +54,8 @@ export const SigninForm = () => {
     });
     console.log(response.data?.signIn);
     if (response.data?.signIn) {
-      login(values.rememberMe && response.data.signIn.accesstoken);
+      login(response.data.signIn.accesstoken);
+
       navigate(ROUTES_PATH.home);
     }
   };

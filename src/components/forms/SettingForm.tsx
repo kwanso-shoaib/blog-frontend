@@ -14,6 +14,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { uploadImage } from "../../utility_Func";
 import { PrimaryLoader } from "../../components";
 import Alert from "@mui/material/Alert";
+import { UpdateUserForm } from "../../types";
 export const SettingsForm = () => {
   const schema = yupSchema.updateUser;
 
@@ -41,10 +42,10 @@ export const SettingsForm = () => {
     },
   });
 
-  const onFormSubmit = async (values: any) => {
+  const onFormSubmit = async (values: UpdateUserForm) => {
     if (images) {
       const response = await uploadImage(images[0]);
-
+      console.log(values);
       updateUser({
         variables: {
           name: values.name,

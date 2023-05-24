@@ -19,7 +19,7 @@ import {
   SelectedImageCard,
   PrimarySelectField,
 } from "../../components";
-
+import { CreatePostFormType } from "../../types";
 const schema = yupSchema.createPost;
 
 export const CreatePostForm = () => {
@@ -56,8 +56,9 @@ export const CreatePostForm = () => {
     },
   });
 
-  const onFormSubmit = async (values: any) => {
+  const onFormSubmit = async (values: CreatePostFormType) => {
     setLoading(true);
+    console.log(values);
     if (images) {
       const response = await uploadImage(images[0]);
       if (response?.data) {

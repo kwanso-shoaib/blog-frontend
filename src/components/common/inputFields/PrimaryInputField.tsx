@@ -1,14 +1,14 @@
-import { Controller } from 'react-hook-form';
-import { InputField } from '../../../styles'
-import { PrimaryInputFieldProps } from './../../../types'
+import { Controller } from "react-hook-form";
+import { InputField } from "../../../styles";
+import { PrimaryInputFieldProps } from "./../../../types";
 
 export const PrimaryInputField = ({
   name,
   control,
   label,
   props,
-  helperText = '',
-  placeholder = ''
+  helperText = "",
+  placeholder = "",
 }: PrimaryInputFieldProps) => (
   <Controller
     control={control}
