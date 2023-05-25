@@ -8,7 +8,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useSignInMutation, SignInUserInput } from "../../gql/graphql";
 import { DONT_HAVE_ACCOUNT_SX } from "../../styles/constants";
 import { Box, Divider, Typography } from "@mui/material";
-import { useEffect } from "react";
+import { SigninFormType } from "../../types";
+import { ApolloError } from "@apollo/client";
 import {
   PrimaryButton,
   ForgetPasswordLink,
@@ -31,7 +32,7 @@ export const SigninForm = () => {
     handleSubmit,
     control,
     formState: { dirtyFields },
-  } = useForm({
+  } = useForm<SigninFormType>({
     resolver: yupResolver(schema),
     defaultValues: {
       rememberMe: true,
@@ -40,8 +41,8 @@ export const SigninForm = () => {
   });
 
   const [signIn, { loading: signInLoading }] = useSignInMutation({
-    onError: (error: any) => {
-      toast.error(error.graphQLErrors[0].extensions?.response.message.message);
+    onError: (error: ApolloError) => {
+      console.log(error.graphQLErrors[0]);
     },
   });
 
@@ -52,10 +53,8 @@ export const SigninForm = () => {
         password: values.password,
       },
     });
-    console.log(response.data?.signIn);
     if (response.data?.signIn) {
       login(response.data.signIn.accesstoken);
-
       navigate(ROUTES_PATH.home);
     }
   };

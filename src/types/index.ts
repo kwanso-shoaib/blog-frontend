@@ -3,6 +3,7 @@ import { DropzoneOptions } from "react-dropzone";
 import { Dispatch, SetStateAction, ReactNode } from "react";
 import { Posts, Comments } from "../gql/graphql";
 import { Control } from "react-hook-form";
+
 export type HeaderNavLinkType = {
   id: number;
   to: string;
@@ -36,6 +37,12 @@ export type PrimaryLoaderProps = {
 };
 
 export type Checkbox = {
+  rememberMe: boolean;
+  email: string;
+  password: string;
+};
+
+export type SigninFormType = {
   rememberMe: boolean;
   email: string;
   password: string;
