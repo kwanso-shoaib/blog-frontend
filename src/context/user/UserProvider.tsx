@@ -1,5 +1,5 @@
-import { isToken } from "../utility_Func";
-import { UserProviderProps } from "../types/index";
+import { isToken } from "../../utility_Func";
+import { UserProviderProps } from "../../types/index";
 import { UserContext } from "./UserContext";
 import { useState } from "react";
 

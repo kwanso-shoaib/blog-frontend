@@ -33,7 +33,6 @@ const logoutOnTokenExpire = new ApolloLink((operation, forward) => {
     return response;
   });
 });
-
 export const client = new ApolloClient({
   link: authLink.concat(logoutOnTokenExpire).concat(httpLink),
   cache: new InMemoryCache(),

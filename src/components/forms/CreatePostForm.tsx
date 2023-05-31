@@ -6,7 +6,11 @@ import { uploadImage } from "../../utility_Func";
 import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, MenuItem } from "@mui/material";
-import { useCreatePostMutation } from "../../gql/graphql";
+import {
+  CreatePostMutation,
+  Posts,
+  useCreatePostMutation,
+} from "../../gql/graphql";
 import { InputFieldWrapper, PrimaryButton } from "../../styles";
 import {
   CREATE_POST_MIN_TO_READ_SELECT_OPTIONS,
@@ -20,13 +24,17 @@ import {
   PrimarySelectField,
 } from "../../components";
 import { CreatePostFormType } from "../../types";
+import { useContext } from "react";
+import { PostContext } from "../../context/post";
+import { Post_Action } from "../../reducers/post";
+
 const schema = yupSchema.createPost;
 
 export const CreatePostForm = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [images, setImages] = useState<File[]>();
-
+  const { dispatchPostAction } = useContext(PostContext);
   const {
     handleSubmit,
     control,
@@ -40,11 +48,22 @@ export const CreatePostForm = () => {
   });
 
   const [createPost] = useCreatePostMutation({
-    onCompleted: (data) => {
+    onCompleted: (data: CreatePostMutation) => {
+      console.log(data);
       setLoading(false);
       if (data.createPosts.response?.status === 201) {
+        let { post } = data.createPosts;
+        if (post) {
+          dispatchPostAction({
+            type: Post_Action.Create_Post,
+            payload: {
+              post: post,
+            },
+          });
+        }
+
         toast.success("Post created successfully");
-        navigate(ROUTES_PATH.myArticles);
+        //navigate(ROUTES_PATH.myArticles);
       }
     },
     onError: (error) => {
@@ -105,11 +124,13 @@ export const CreatePostForm = () => {
             label="Min. to read"
             control={control}
           >
-            {CREATE_POST_MIN_TO_READ_SELECT_OPTIONS.map((options, index) => (
-              <MenuItem value={options.value} key={index + options.value}>
-                {options.label}
-              </MenuItem>
-            ))}
+            {CREATE_POST_MIN_TO_READ_SELECT_OPTIONS.map(
+              ({ value, label }, index) => (
+                <MenuItem value={value} key={index + value}>
+                  {label}
+                </MenuItem>
+              )
+            )}
           </PrimarySelectField>
         </InputFieldWrapper>
 

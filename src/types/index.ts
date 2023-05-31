@@ -2,7 +2,7 @@ import { BaseTextFieldProps, SxProps, Theme, Checkbox } from "@mui/material";
 import { DropzoneOptions } from "react-dropzone";
 import { Dispatch, SetStateAction, ReactNode } from "react";
 import { Posts, Comments } from "../gql/graphql";
-import { Control } from "react-hook-form";
+import { CreatePostAction } from "../reducers/post";
 
 export type HeaderNavLinkType = {
   id: number;
@@ -18,6 +18,7 @@ export type PrimaryPasswordFieldProps = {
   placeholder?: string;
   props?: BaseTextFieldProps;
 };
+
 export type PasswordInputAdornmentProps = {
   showPassword: boolean;
   onhandleClickShowPassword: () => void;
@@ -179,6 +180,23 @@ export type CreatePostFormType = {
   minToRead: string;
   text: string;
 };
+
 export type AddCommenFormType = {
   text: string;
+};
+
+export type PostContextType = {
+  posts: Posts[];
+  dispatchPostAction: () => React.Dispatch<CreatePostAction>;
+  count: number;
+};
+
+export type PostProviderProps = {
+  children: ReactNode;
+};
+
+export type PostStore = {
+  posts: Posts[];
+  count: number;
+  dispatchPostAction: Dispatch<CreatePostAction>;
 };

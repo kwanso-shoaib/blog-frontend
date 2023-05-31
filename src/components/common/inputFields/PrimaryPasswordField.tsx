@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import { Controller } from 'react-hook-form';
-import { InputField } from '../../../styles';
-import { PasswordInputAdornment } from '../../atom';
-import { PrimaryPasswordFieldProps } from '../../../types';
+import { useState } from "react";
+import { Controller } from "react-hook-form";
+import { InputField } from "../../../styles";
+import { PasswordInputAdornment } from "../../atom";
+import { PrimaryPasswordFieldProps } from "../../../types";
 
 export const PrimaryPasswordField = ({
   name,
   control,
   label,
   props,
-  helperText = '',
-  placeholder = ''
+  helperText = "",
+  placeholder = "",
 }: PrimaryPasswordFieldProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -23,7 +23,7 @@ export const PrimaryPasswordField = ({
         <InputField
           {...field}
           {...props}
-          type={showPassword ? 'text' : 'password'}
+          type={showPassword ? "text" : "password"}
           placeholder={placeholder}
           fullWidth
           label={label}
@@ -37,7 +37,7 @@ export const PrimaryPasswordField = ({
                 showPassword={showPassword}
                 onhandleClickShowPassword={handleClickShowPassword}
               />
-            )
+            ),
           }}
         />
       )}

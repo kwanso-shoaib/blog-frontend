@@ -8,11 +8,12 @@ import {
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import usePagination from "@mui/material/usePagination/usePagination";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { FC } from "react";
 
-export const PrimaryPagination = ({
+export const PrimaryPagination: FC<PrimaryPaginationProps> = ({
   count,
   onReftech,
-}: PrimaryPaginationProps) => {
+}) => {
   const theme = useTheme();
   const isMobileView = useMediaQuery(theme.breakpoints.down("md"));
   const { items } = usePagination({

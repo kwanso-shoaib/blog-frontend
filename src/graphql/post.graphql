@@ -20,9 +20,31 @@ mutation createPost(
       status
     }
     post {
+      createdAt
       id
-      title
       text
+      title
+      updatedAt
+      user {
+        createdAt
+        email
+        name
+        password
+        updatedAt
+      }
+      comments {
+        createdAt
+        text
+        updatedAt
+        id
+        user {
+          createdAt
+          email
+          name
+          password
+          updatedAt
+        }
+      }
     }
   }
 }

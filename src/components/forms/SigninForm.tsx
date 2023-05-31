@@ -1,4 +1,3 @@
-import toast from "react-hot-toast";
 import { useAuth } from "../../hooks";
 import { useForm } from "react-hook-form";
 import { yupSchema } from "../../validation";

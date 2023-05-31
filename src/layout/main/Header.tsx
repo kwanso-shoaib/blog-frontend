@@ -3,7 +3,7 @@ import { useRef, useEffect, useCallback } from "react";
 import { HEADER_SCROLL_BEHAVIOUR } from "../../styles/constants";
 import { HeaderWrapper } from "../../styles";
 import { FullViewHeader } from "./FullViewHeader";
-import { UserContext } from "../../context";
+import { UserContext } from "../../context/user";
 import { useAuth } from "../../hooks";
 import { useContext } from "react";
 export const Header = () => {

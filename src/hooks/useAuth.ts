@@ -1,6 +1,6 @@
 import { useCallback, useContext } from "react";
 import { removeToken, saveToken } from "../utility_Func";
-import { UserContext } from "../context";
+import { UserContext } from "../context/user";
 
 export const useAuth = () => {
   const { setIsLoggedIn } = useContext(UserContext);

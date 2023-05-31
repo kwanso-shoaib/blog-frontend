@@ -1,4 +1,4 @@
-import { UserContext } from "../../context";
+import { UserContext } from "../../context/user";
 import { useContext } from "react";
 import { UserDummyImage } from "../../asset";
 import { getTimeFromNow } from "../../utility_Func";

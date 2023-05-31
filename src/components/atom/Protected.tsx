@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { UserContext } from "../../context";
+import { UserContext } from "../../context/user";
 import { ProtectedProps } from "../../types";
 import { useContext } from "react";
 export const Protected = ({ children }: ProtectedProps) => {
