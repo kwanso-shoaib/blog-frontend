@@ -17,8 +17,8 @@ import { PostProvider } from "./context/post";
 function App() {
   return (
     <UserProvider>
-      <PostProvider>
-        <ApolloProvider client={client}>
+      <ApolloProvider client={client}>
+        <PostProvider>
           <ThemeProvider theme={theme}>
             <StyledEngineProvider>
               <CssBaseline>
@@ -48,8 +48,8 @@ function App() {
               </CssBaseline>
             </StyledEngineProvider>
           </ThemeProvider>
-        </ApolloProvider>
-      </PostProvider>
+        </PostProvider>
+      </ApolloProvider>
     </UserProvider>
   );
 }

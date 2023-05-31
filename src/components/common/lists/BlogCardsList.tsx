@@ -10,7 +10,6 @@ export const BlogCardsList = ({
   data,
   total,
   paginate,
-  onRefetch,
   perPage = 1,
 }: BlogCardsListProps) => {
   const navigate = useNavigate();
@@ -42,12 +41,12 @@ export const BlogCardsList = ({
           marginLeft: { xs: "0px", md: "120px" },
         }}
       >
-        {paginate && onRefetch && total > perPage && (
+        {/* {paginate && onRefetch && total > perPage && (
           <PrimaryPagination
             count={Math.ceil(total / perPage)}
             onReftech={onRefetch}
           />
-        )}
+        )} */}
       </Box>
     </>
   );

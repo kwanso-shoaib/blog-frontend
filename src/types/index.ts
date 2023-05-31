@@ -2,7 +2,7 @@ import { BaseTextFieldProps, SxProps, Theme, Checkbox } from "@mui/material";
 import { DropzoneOptions } from "react-dropzone";
 import { Dispatch, SetStateAction, ReactNode } from "react";
 import { Posts, Comments } from "../gql/graphql";
-import { CreatePostAction } from "../reducers/post";
+import { PostAction } from "../reducers/post";
 
 export type HeaderNavLinkType = {
   id: number;
@@ -187,7 +187,7 @@ export type AddCommenFormType = {
 
 export type PostContextType = {
   posts: Posts[];
-  dispatchPostAction: () => React.Dispatch<CreatePostAction>;
+  dispatchPostAction: () => React.Dispatch<PostAction>;
   count: number;
 };
 
@@ -198,5 +198,5 @@ export type PostProviderProps = {
 export type PostStore = {
   posts: Posts[];
   count: number;
-  dispatchPostAction: Dispatch<CreatePostAction>;
+  dispatchPostAction: Dispatch<PostAction>;
 };

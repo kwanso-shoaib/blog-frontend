@@ -1,8 +1,9 @@
 import { PostStore } from "../types";
-import { CreatePostMutation, PostPayload, Posts } from "../gql/graphql";
+import { Posts } from "../gql/graphql";
 import { Dispatch } from "react";
 export enum Post_Action {
   Create_Post = "createPost",
+  Get_Post = "getPost",
 }
 
 export type CreatePostAction = {
@@ -11,8 +12,14 @@ export type CreatePostAction = {
     post: Posts;
   };
 };
-
-export type PostAction = CreatePostAction;
+export type GetPostAction = {
+  type: Post_Action.Get_Post;
+  payload: {
+    posts: any;
+    count: number;
+  };
+};
+export type PostAction = CreatePostAction | GetPostAction;
 
 export const postStoreDefaultValue: PostStore = {
   posts: [],
@@ -23,25 +30,31 @@ export const postStoreDefaultValue: PostStore = {
 };
 export type intialStateProps = {
   posts: Posts[] | [];
-  dispatchPostAction: Dispatch<CreatePostAction>;
+  dispatchPostAction: Dispatch<PostAction>;
   count: number;
 };
 export type returnType = {
   posts: Posts[];
   count: number;
 };
-export const postReducer = (state: PostStore, action: CreatePostAction) => {
+export const postReducer = (state: PostStore, action: PostAction) => {
   const { type, payload } = action;
 
   switch (type) {
     case Post_Action.Create_Post: {
       return {
         ...state,
-        post: [state.posts, payload.post],
+        posts: [...state.posts, payload.post],
         count: state.count + 1,
       };
     }
-
+    case Post_Action.Get_Post: {
+      return {
+        ...state,
+        posts: payload.posts,
+        count: state.count + payload.count,
+      };
+    }
     default:
       return state;
   }
