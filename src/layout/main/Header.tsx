@@ -3,6 +3,7 @@ import { useRef, useEffect, useCallback } from "react";
 import { HEADER_SCROLL_BEHAVIOUR } from "../../styles/constants";
 import { HeaderWrapper } from "../../styles";
 import { FullViewHeader } from "./FullViewHeader";
+import { MobileHeader } from "./MobileHeader";
 import { UserContext } from "../../context/user";
 import { useAuth } from "../../hooks";
 import { useContext } from "react";
@@ -11,7 +12,7 @@ export const Header = () => {
   const headerRef = useRef<HTMLDivElement>();
   const { logout } = useAuth();
   const { isLoggedIn } = useContext(UserContext);
-  const isMobileView = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobileView = useMediaQuery("(max-width:970px)");
 
   const onScrollHeaderBehaviour = useCallback(() => {
     if (headerRef.current) {
@@ -35,7 +36,11 @@ export const Header = () => {
 
   return (
     <HeaderWrapper ref={headerRef}>
-      <FullViewHeader isLoggedIn={isLoggedIn} logout={logout} />
+      {isMobileView ? (
+        <MobileHeader isLoggedIn={isLoggedIn} logout={logout} />
+      ) : (
+        <FullViewHeader isLoggedIn={isLoggedIn} logout={logout} />
+      )}
     </HeaderWrapper>
   );
 };

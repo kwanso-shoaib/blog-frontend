@@ -11,11 +11,11 @@ import {
   TITLE_WITH_BORDER_BOTTOM,
 } from "../../styles/constants";
 
-export const BlogCommentSection = ({
+export const BlogCommentSection: React.FC<BlogCommentSectionProps> = ({
   postId,
   comments,
   onRefetch,
-}: BlogCommentSectionProps) => {
+}) => {
   const { isLoggedIn } = useContext(UserContext);
   return (
     <Box sx={{ minWidth: "100%" }}>

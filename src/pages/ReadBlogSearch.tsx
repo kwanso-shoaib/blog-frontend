@@ -6,6 +6,7 @@ import { TITLE_WITH_BORDER_BOTTOM } from "../styles/constants";
 import { BLOGS_PER_PAGE, ROUTES_PATH } from "../constants";
 import { Posts, useGetPostsLazyQuery } from "../gql/graphql";
 import { BlogCardSkeleton, BlogCardsList } from "../components";
+import { ApolloError } from "@apollo/client";
 
 export const ReadBlogBySearch = () => {
   const navigate = useNavigate();
@@ -13,9 +14,8 @@ export const ReadBlogBySearch = () => {
 
   const [getPosts, { data: allPosts, loading }] = useGetPostsLazyQuery({
     variables: { search: search || "" },
-    onError: (error) => {
-      //  navigate(ROUTES_PATH.home);
-      toast.error(error.message);
+    onError: (error: ApolloError) => {
+      navigate(ROUTES_PATH.home);
     },
   });
   // only re-render whem search applied

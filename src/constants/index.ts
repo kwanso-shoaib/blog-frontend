@@ -58,4 +58,30 @@ export const HEADER_NAV_LINKS: HeaderNavLinkType[] = [
   },
 ];
 
+export const MOBILE_HEADER_NAV_LINKS: HeaderNavLinkType[] = [
+  {
+    id: 1,
+    to: ROUTES_PATH.home,
+    text: "Home",
+    isProtected: false,
+  },
+  {
+    id: 2,
+    to: ROUTES_PATH.createPost,
+    text: "Create Post",
+    isProtected: true,
+  },
+  {
+    id: 3,
+    to: ROUTES_PATH.myArticles,
+    text: "My Articles",
+    isProtected: true,
+  },
+  {
+    id: 4,
+    to: ROUTES_PATH.settings,
+    text: "Settings",
+    isProtected: true,
+  },
+];
 export const TOKEN_KEY = "auth_token";

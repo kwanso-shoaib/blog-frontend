@@ -17,7 +17,7 @@ import {
   COMMENT_CARD_AVATAR_CONTAINER,
 } from "../../styles/constants";
 
-export const CommentCard = ({
+export const CommentCard: React.FC<CommentCardProps> = ({
   id,
   text,
   avatar,
@@ -26,7 +26,7 @@ export const CommentCard = ({
   isParent = false,
   totallReplies,
   timeFromNow,
-}: CommentCardProps) => {
+}) => {
   const [showReplies, setShowReplies] = useState(false);
   const { isLoggedIn } = useContext(UserContext);
 

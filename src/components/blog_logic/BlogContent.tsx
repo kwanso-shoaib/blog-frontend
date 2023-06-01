@@ -9,7 +9,7 @@ import {
   READ_BLOG_TIME_TO_READ_TAG_CHIP,
 } from "../../styles/constants";
 
-export const BlogContent = ({
+export const BlogContent: React.FC<BlogContentProps> = ({
   tag,
   date,
   text,
@@ -17,7 +17,7 @@ export const BlogContent = ({
   title,
   duration,
   authorName,
-}: BlogContentProps) => (
+}) => (
   <>
     <Stack direction="row">
       <BlogTagChip sx={{ background: "#F2F8F7", color: "#666666" }}>

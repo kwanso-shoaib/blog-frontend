@@ -15,7 +15,7 @@ export type CreatePostAction = {
 export type GetPostAction = {
   type: Post_Action.Get_Post;
   payload: {
-    posts: any;
+    posts: Posts[];
     count: number;
   };
 };
@@ -52,7 +52,7 @@ export const postReducer = (state: PostStore, action: PostAction) => {
       return {
         ...state,
         posts: payload.posts,
-        count: state.count + payload.count,
+        count: payload.count,
       };
     }
     default:

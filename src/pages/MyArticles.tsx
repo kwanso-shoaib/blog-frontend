@@ -4,12 +4,8 @@ import { Box, Typography } from "@mui/material";
 import { Posts, useMyPostsQuery } from "../gql/graphql";
 import { TITLE_WITH_BORDER_BOTTOM } from "../styles/constants";
 import { BlogCardSkeleton, BlogCardsList } from "../components";
-import { useContext, useEffect } from "react";
-import { PostContext } from "../context/post";
-import { Post_Action } from "../reducers/post";
+import { ApolloError } from "@apollo/client";
 export const MyArticles = () => {
-  //fetch data from store validate if data exist then populate otherwise fetch and update state as well
-
   const {
     data: allPosts,
     loading,
@@ -19,13 +15,11 @@ export const MyArticles = () => {
       skip: 0,
       take: BLOGS_PER_PAGE,
     },
-    onError: (error) => toast.error(error.message),
+    onError: (error: ApolloError) => toast.error(error.message),
     fetchPolicy: "cache-and-network",
   });
 
   const onRefetch = (page: number) => {
-    console.trace();
-    console.log("trace");
     refetch({ skip: BLOGS_PER_PAGE * (page - 1), take: BLOGS_PER_PAGE });
   };
 
@@ -49,7 +43,7 @@ export const MyArticles = () => {
         />
 
         {loading &&
-          [...Array(BLOGS_PER_PAGE)].map((_, index) => {
+          [...Array(BLOGS_PER_PAGE)].map((_, index: number) => {
             return (
               <Box sx={{ marginTop: index === 0 ? "0px" : "48px" }} key={index}>
                 <BlogCardSkeleton />

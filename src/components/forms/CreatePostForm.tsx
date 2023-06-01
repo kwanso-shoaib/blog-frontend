@@ -63,7 +63,7 @@ export const CreatePostForm = () => {
         }
 
         toast.success("Post created successfully");
-        //navigate(ROUTES_PATH.myArticles);
+        navigate(ROUTES_PATH.myArticles);
       }
     },
     onError: (error) => {

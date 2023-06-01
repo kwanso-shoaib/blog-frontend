@@ -9,12 +9,12 @@ import { PrimaryInputField, PrimaryLoader } from "../../components";
 import { AddCommenFormType } from "../../types";
 const schema = yupSchema.createComment;
 
-export const AddComment = ({
+export const AddComment: React.FC<AddCommentProps> = ({
   postId,
   parentId,
   onRefetch,
   isReply = false,
-}: AddCommentProps) => {
+}) => {
   const [createComment, { loading }] = useCreateCommentMutation({
     onError: (error) => {
       toast.error(error.message);

@@ -6,12 +6,13 @@ import { getFormatDateInDDMMYYYY } from "../../../utility_Func";
 import { BlogImage1, UserDummyImage } from "../../../asset/images";
 import { BlogCard, PrimaryPagination } from "../../../components";
 import { Posts } from "../../../gql/graphql";
-export const BlogCardsList = ({
+export const BlogCardsList: React.FC<BlogCardsListProps> = ({
   data,
   total,
+  onRefetch,
   paginate,
   perPage = 1,
-}: BlogCardsListProps) => {
+}) => {
   const navigate = useNavigate();
   return (
     <>
@@ -41,12 +42,12 @@ export const BlogCardsList = ({
           marginLeft: { xs: "0px", md: "120px" },
         }}
       >
-        {/* {paginate && onRefetch && total > perPage && (
+        {paginate && onRefetch && total > perPage && (
           <PrimaryPagination
             count={Math.ceil(total / perPage)}
             onReftech={onRefetch}
           />
-        )} */}
+        )}
       </Box>
     </>
   );

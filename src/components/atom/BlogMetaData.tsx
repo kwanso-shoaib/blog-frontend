@@ -4,12 +4,12 @@ import { PRIMARY_BLOG_CARD_META_DATA_DIVIDER } from "../../styles/constants";
 import { Box, Divider, Stack, useMediaQuery, useTheme } from "@mui/material";
 import { BlogCardMetaDataIconContainer, BlogCardMetaText } from "../../styles";
 
-export const BlogMetaData = ({
+export const BlogMetaData: React.FC<BlogMetaDataProps> = ({
   author,
   authorAvatar,
   date,
   duration,
-}: BlogMetaDataProps) => {
+}) => {
   const theme = useTheme();
   const isMobileView = useMediaQuery(theme.breakpoints.down("md"));
   return (

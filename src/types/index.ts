@@ -200,3 +200,8 @@ export type PostStore = {
   count: number;
   dispatchPostAction: Dispatch<PostAction>;
 };
+
+export type MobileHeaderProps = {
+  isLoggedIn: boolean;
+  logout: () => void;
+};
