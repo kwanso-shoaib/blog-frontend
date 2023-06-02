@@ -1,15 +1,14 @@
-import { Box } from "@mui/material"
-import { AuthPageFormContainer, AuthPageHeading } from "../styles"
-import { SigninForm } from "../components/forms/SigninForm"
+import { Box } from "@mui/material";
+import { AuthPageFormContainer, AuthPageHeading } from "../styles";
+import { SigninForm } from "../components/forms/SigninForm";
 
-export const Signin = ()=> (
+const Signin = () => (
+  <Box>
+    <AuthPageHeading>SigIn</AuthPageHeading>
+    <AuthPageFormContainer>
+      <SigninForm />
+    </AuthPageFormContainer>
+  </Box>
+);
 
-    <Box>
-        <AuthPageHeading>
-            SigIn
-        </AuthPageHeading>
-        <AuthPageFormContainer>
-            <SigninForm/>
-        </AuthPageFormContainer>
-    </Box>
-) 
+export default Signin;

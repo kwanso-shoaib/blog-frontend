@@ -5,7 +5,7 @@ import { Posts, useMyPostsQuery } from "../gql/graphql";
 import { TITLE_WITH_BORDER_BOTTOM } from "../styles/constants";
 import { BlogCardSkeleton, BlogCardsList } from "../components";
 import { ApolloError } from "@apollo/client";
-export const MyArticles = () => {
+const MyArticles = () => {
   const {
     data: allPosts,
     loading,
@@ -54,3 +54,4 @@ export const MyArticles = () => {
     </Box>
   );
 };
+export default MyArticles;

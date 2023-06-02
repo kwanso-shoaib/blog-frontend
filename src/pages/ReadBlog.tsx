@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Comments, useFindPostByIdQuery } from "../gql/graphql";
 import { BlogCommentSection, BlogContent, PrimaryLoader } from "../components";
 
-export const ReadBlog = () => {
+const ReadBlog = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -50,3 +50,4 @@ export const ReadBlog = () => {
     </Box>
   );
 };
+export default ReadBlog;

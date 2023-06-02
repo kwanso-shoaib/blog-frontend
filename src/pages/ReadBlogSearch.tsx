@@ -8,7 +8,7 @@ import { Posts, useGetPostsLazyQuery } from "../gql/graphql";
 import { BlogCardSkeleton, BlogCardsList } from "../components";
 import { ApolloError } from "@apollo/client";
 
-export const ReadBlogBySearch = () => {
+const ReadBlogBySearch = () => {
   const navigate = useNavigate();
   const { search } = useParams();
 
@@ -64,3 +64,4 @@ export const ReadBlogBySearch = () => {
     </Box>
   );
 };
+export default ReadBlogBySearch;

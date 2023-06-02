@@ -7,7 +7,7 @@ import { useContext, useEffect } from "react";
 import { PostContext } from "../context/post";
 import { Post_Action } from "../reducers/post";
 
-export const Home = () => {
+const Home = () => {
   const { posts, count, dispatchPostAction } = useContext(PostContext);
   const {
     data: allPosts,
@@ -72,3 +72,4 @@ export const Home = () => {
     </Box>
   );
 };
+export default Home;
