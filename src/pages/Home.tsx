@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { TITLE_WITH_BORDER_BOTTOM } from "../styles/constants/index";
 
-import { HomeConainer } from "../Homecontainer";
+import { HomeConainer } from "../container/HomeContainer";
 
 const Home = () => {
   return (
