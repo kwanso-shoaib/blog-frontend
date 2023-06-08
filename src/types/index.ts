@@ -205,3 +205,26 @@ export type MobileHeaderProps = {
   isLoggedIn: boolean;
   logout: () => void;
 };
+
+export type ImagePromiseType = {
+  asset_id: string;
+  public_id: string;
+  version: string;
+  version_id: string;
+  original_filename: string;
+  signature: string;
+  width: string;
+  height: string;
+  format: string;
+  resource_type: string;
+  created_at: string;
+  tags: string[];
+  bytes: string;
+  type: string;
+  etag: string;
+  placeholder: boolean;
+  url: string;
+  secure_url: string;
+  folder: string;
+  access_mode: string;
+};

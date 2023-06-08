@@ -1,22 +1,23 @@
 import { PostStore } from "../types";
 import { Posts } from "../gql/graphql";
 import { Dispatch } from "react";
-export enum Post_Action {
-  Create_Post = "createPost",
-  Get_Post = "getPost",
+
+export enum PostActions {
+  CREATE_POST = "createPost",
+  GET_POST = "getPost",
 }
 
 export type CreatePostAction = {
-  type: Post_Action.Create_Post;
+  type: PostActions.CREATE_POST;
   payload: {
     post: Posts;
   };
 };
 export type GetPostAction = {
-  type: Post_Action.Get_Post;
+  type: PostActions.GET_POST;
   payload: {
-    posts: Posts[];
-    count: number;
+    posts: any;
+    count: any;
   };
 };
 export type PostAction = CreatePostAction | GetPostAction;
@@ -41,14 +42,14 @@ export const postReducer = (state: PostStore, action: PostAction) => {
   const { type, payload } = action;
 
   switch (type) {
-    case Post_Action.Create_Post: {
+    case PostActions.CREATE_POST: {
       return {
         ...state,
         posts: [...state.posts, payload.post],
         count: state.count + 1,
       };
     }
-    case Post_Action.Get_Post: {
+    case PostActions.GET_POST: {
       return {
         ...state,
         posts: payload.posts,

@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import axios, { AxiosResponse } from "axios";
 import { CLOUDINARY_IMAGE_UPLOAD_URL, TOKEN_KEY } from "../constants";
+import { ImagePromiseType } from "../types";
 
 dayjs.extend(relativeTime);
 export function saveToken(token: string) {
@@ -26,7 +27,7 @@ export function isToken() {
 
 export const uploadImage = async (
   image: File
-): Promise<AxiosResponse<any, any> | any> => {
+): Promise<AxiosResponse<ImagePromiseType>> => {
   const formData = new FormData();
   formData.append("file", image);
   formData.append(
@@ -36,6 +37,7 @@ export const uploadImage = async (
 
   try {
     const response = await axios.post(CLOUDINARY_IMAGE_UPLOAD_URL, formData);
+    console.log(response);
     return response;
   } catch (error: any) {
     return error;

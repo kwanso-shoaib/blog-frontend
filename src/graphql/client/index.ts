@@ -6,8 +6,8 @@ import {
   HttpLink,
   InMemoryCache,
 } from "@apollo/client";
-
 import { onError } from "@apollo/client/link/error";
+
 const httpLink = new HttpLink({ uri: process.env.REACT_APP_API_URL });
 
 const authLink = new ApolloLink((operation, forward) => {
@@ -21,6 +21,7 @@ const authLink = new ApolloLink((operation, forward) => {
 
   return forward(operation);
 });
+
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
     graphQLErrors.map(({ message, locations, path }) =>

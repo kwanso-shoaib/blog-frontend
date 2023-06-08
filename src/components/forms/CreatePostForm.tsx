@@ -26,7 +26,7 @@ import {
 import { CreatePostFormType } from "../../types";
 import { useContext } from "react";
 import { PostContext } from "../../context/post";
-import { Post_Action } from "../../reducers/post";
+import { PostActions } from "../../reducers/post";
 
 const schema = yupSchema.createPost;
 
@@ -49,13 +49,12 @@ export const CreatePostForm = () => {
 
   const [createPost] = useCreatePostMutation({
     onCompleted: (data: CreatePostMutation) => {
-      console.log(data);
       setLoading(false);
       if (data.createPosts.response?.status === 201) {
         let { post } = data.createPosts;
         if (post) {
           dispatchPostAction({
-            type: Post_Action.Create_Post,
+            type: PostActions.CREATE_POST,
             payload: {
               post: post,
             },
@@ -92,7 +91,6 @@ export const CreatePostForm = () => {
         });
       } else {
         toast.error("Unable to create article");
-        toast.error(response.response.data.error.message);
         setLoading(false);
       }
     }

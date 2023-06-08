@@ -52,24 +52,23 @@ export const SignupForm = () => {
     },
   });
 
-  const onFormSubmit = (values: CreateUserInput) => {
-    signUp({
+  const onFormSubmit = async (values: CreateUserInput) => {
+    const { name, email, password } = values;
+    const { errors } = await signUp({
       variables: {
-        name: values.name,
-        email: values.email,
-        password: values.password,
+        name: name,
+        email: email,
+        password: password,
       },
-    }).then((response) => {
-      toast.error("singup successfully happen");
-      if (!response.errors) {
-        signIn({
-          variables: {
-            email: values.email,
-            password: values.password,
-          },
-        });
-      }
     });
+    if (!errors) {
+      signIn({
+        variables: {
+          email: email,
+          password: password,
+        },
+      });
+    }
   };
 
   return (
